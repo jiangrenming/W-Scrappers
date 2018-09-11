@@ -1,0 +1,32 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Holo.NoActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="Text_Style">
+        <item name="android:textIsSelectable">false</item>
+        <item name="android:drawablePadding">2dip</item>
+    </style>
+
+    <style name="Text_Large_White" parent="Text_Style">
+        <item name="android:textSize">18dip</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Text_Middle_White" parent="Text_Style">
+        <item name="android:textSize">14dip</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <declare-styleable name="StackCardContainer">
+        <attr name="scc_padding" format="integer" />
+        <attr name="scc_edge" format="integer" />
+        <attr name="scc_min_change_distance" format="integer" />
+        <attr name="scc_anim_duration" format="integer" />
+        <attr name="scc_type" format="enum">
+            <enum name="vertical" value="0" />
+            <enum name="horizontal" value="1" />
+        </attr>
+    </declare-styleable>
+
+</resources>

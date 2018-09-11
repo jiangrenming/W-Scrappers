@@ -1,0 +1,54 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdk
+    buildToolsVersion rootProject.ext.buildTools
+    defaultConfig {
+        applicationId "com.scrappersW"
+        minSdkVersion rootProject.ext.minSdk
+        targetSdkVersion rootProject.ext.targetSdk
+        versionCode 1
+        versionName "1.0"
+    }
+
+    signingConfigs {
+        myConfig {
+            storeFile file('w-scrappers.jks')
+            storePassword "wscrappers"
+            keyAlias "wscrappers.keystore"
+            keyPassword "wscrappers"
+        }
+    }
+    buildTypes {
+        debug {
+            buildConfigField "String", "POST_URL", "${SIT_IP}"
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            buildConfigField "String", "POST_URL", "${REAL_IP}"
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.myConfig
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile "com.android.support:design:${rootProject.ext.support}"
+    compile project(':retrofitlibrary')
+    compile 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile project(':banner')
+    compile 'com.github.bumptech.glide:glide:3.8.0'
+    compile project(':library')
+    compile 'com.makeramen:roundedimageview:2.3.0'
+    compile project(':RecyclerViewHelper')
+    compile project(':retrofitlibrary')
+    compile project(':commonlib')
+
+    compile project(':citymodelib')
+}
